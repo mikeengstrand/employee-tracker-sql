@@ -18,15 +18,20 @@ function start(){
       message: "Choose an item from the list below:",
       name: "option", 
       choices: [
+        "List All Employees",
+        "Add Employee",
+        "Update Employee Role",
+        "List All Rows",
         "List All Departments",
-        "Option 2",
-        "Option 3"
+        "Add Department"
       ]
     }
   ]).then( response => {
     switch(response.option){
       case "List All Departments":
+        // this will go to query.js
         listAllDepartments().then( ([rows]) => {
+          // this will go to display.js
           displayAllDepartments(rows);
           start();
         });

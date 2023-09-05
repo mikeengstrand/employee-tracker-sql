@@ -19,8 +19,10 @@ inquirer.prompt([
     type: "list", 
     message: "Choose a student from the list below:", 
     name: "selectedStudentId",
+    // map over the array of data to transform into another array
     choices: arrayOfStudents.map(({ id, name }) => ({
       name: name,
+      // take id and put it under the key of "value"
       value: id
     })).then( response => {
       // response.selectedStudentId = id of the student chosen by the user+
