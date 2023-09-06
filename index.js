@@ -18,16 +18,26 @@ function start(){
       message: "Choose an item from the list below:",
       name: "option", 
       choices: [
-        "List All Employees",
-        "Add Employee",
-        "Update Employee Role",
-        "List All Rows",
+        // "List All Employees",
+        // "Add Employee",
+        // "Update Employee Role",
+        "List All Roles",
         "List All Departments",
-        "Add Department"
+        // "Add Department"
       ]
     }
   ]).then( response => {
     switch(response.option){
+      // case "List All Employees":
+      //   // this will go to query.js
+      //   listAllEmployees().then( ([rows]) => {
+      //     // this will go to display.js
+      //     displayAllEmployees(rows);
+      //     start();
+      //   });
+        
+      //   break;
+
       case "List All Departments":
         // this will go to query.js
         listAllDepartments().then( ([rows]) => {
@@ -37,6 +47,7 @@ function start(){
         });
         
         break;
+        
 
 
       default:
