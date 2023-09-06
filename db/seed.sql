@@ -8,7 +8,7 @@ VALUES
     ('Finance'),
     ('Legal');
 
-setup each role with their salary and id
+-- setup each role with their salary and id
 INSERT INTO role
     (title, salary, department_id)
 VALUES
@@ -19,11 +19,12 @@ VALUES
     ('Account Manager',160000, 3),
     ('Accountant',125000, 3),
     ('Legal Team Lead',250000, 4),
-    ('Lawyer',190000, 4),
+    ('Lawyer',190000, 4);
 
 -- need to think about where we put manager ID - null?
 -- setup each employee with their name, role_id and Manager ID
--- INSERT INTO role
---     (fname, lname, role_id, manager_id)
--- VALUES
---     ('John', 'Doe', 1, )
+INSERT INTO employee
+    (fname, lname, role_id, manager_id)
+VALUES
+    ('John', 'Doe', 1, null),
+    ('example', 'name', 1, 1);
