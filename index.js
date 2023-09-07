@@ -1,6 +1,7 @@
 const inquirer = require("inquirer");
 const connection = require("./config/connection");
-const { listAllDepartments, listAllRoles, listAllEmployees, addDepartments } = require("./lib/queries")
+const { listAllDepartments, listAllRoles, listAllEmployees, addDepartments, addRoles } = require("./lib/queries")
+
 const { displayAllDepartments, displayAllRoles, displayAllEmployees } = require("./lib/displays")
 /*
   There are a lot of menu items presented to users in this app. The only real way you cam manage them 
@@ -22,7 +23,7 @@ function start(){
         "List All Roles",
         "List All Employees",
         // "Add Employee",
-        // "Add Employee Role",
+        "Add Role",
         "Add Department"
       ]
     }
@@ -57,6 +58,11 @@ function start(){
 
       case "Add Department":
         addDepartment()
+
+        break;
+
+      case "Add Role":
+        addRole()
 
         break;
        
@@ -102,8 +108,39 @@ function addDepartment(){
     })
   })
 }
-
-
+/////////////
+function addRole(){
+  inquirer.prompt([
+    {   
+      type: "input",
+      message: "What is the name of the new role?:",
+      name: "newRole"
+    },
+    {
+      type: "input",
+      message: "What is the title of the new role?:",
+      title: "newTitle"
+    },
+    {
+      type: "input",
+      message: "What is the salary of the new role?:",
+      salary: "newSalary"
+    },
+    {
+      type: "input",
+      message: "What is the department ID of the new role?:",
+      department_id: "newDepartment_id"
+    }
+  ]).then( response => {
+    addRoles(response.newRoles).then(()=> {
+      listAllRoles().then( ([rows]) => {
+        displayAllRoles(rows);
+        start();
+    ////////////////////////////////////////    
+    })
+    })
+  })
+}
 
 
 
