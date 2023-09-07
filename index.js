@@ -111,25 +111,23 @@ function addDepartment(){
 /////////////
 function addRole(){
   inquirer.prompt([
-    {   
-      type: "input",
-      message: "What is the name of the new role?:",
-      name: "newRole"
-    },
     {
       type: "input",
       message: "What is the title of the new role?:",
-      title: "newTitle"
+      title: "newTitle",
+      name: "addTitle", 
     },
     {
       type: "input",
       message: "What is the salary of the new role?:",
-      salary: "newSalary"
+      salary: "newSalary",
+      name: "addSalary"
     },
     {
       type: "input",
       message: "What is the department ID of the new role?:",
-      department_id: "newDepartment_id"
+      department_id: "newDepartment_id",
+      name: "addDept"
     }
   ]).then( response => {
     addRoles(response.newRoles).then(()=> {
