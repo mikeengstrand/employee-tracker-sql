@@ -22,7 +22,7 @@ function start(){
         "List All Departments",
         "List All Roles",
         "List All Employees",
-        // "Add Employee",
+        "Add Employee",
         "Add Role",
         "Add Department"
       ]
@@ -65,6 +65,11 @@ function start(){
         addRole()
 
         break;
+
+        case "Add Employee":
+          addEmployee()
+  
+          break;
        
       // case "Add Role":
       //   addRole().then( ([rows]) => {
@@ -130,7 +135,7 @@ function addRole(){
       name: "addDept"
     }
   ]).then( response => {
-    addRoles(response.newRoles).then(()=> {
+    addRoles(response.newRole).then(()=> {
       listAllRoles().then( ([rows]) => {
         displayAllRoles(rows);
         start();
@@ -140,6 +145,42 @@ function addRole(){
   })
 }
 
+////////////////////////
+function addEmployee(){
+  inquirer.prompt([
+    {
+      type: "input",
+      message: "What is the employees first name??:",
+      title: "newFNAme",
+      name: "addFName", 
+    },
+    {
+      type: "input",
+      message: "What is the last name of the employee?:",
+      salary: "newLName",
+      name: "addLName"
+    },
+    {
+      type: "input",
+      message: "What is the Role ID for the new employee?:",
+      department_id: "newRole_id",
+      name: "addNewRole_id"
+    },
+    {
+      type: "input",
+      message: "What is the Manager ID for the new employee?:",
+      department_id: "newManager_id",
+      name: "addNewRole_id"
+    }
+  ]).then( response => {
+    addEmployees(response.newEmployee).then(()=> {
+      listAllEmployees().then( ([rows]) => {
+        displayAllEmployees(rows);
+        start();
+      })
+    })
+  })
+}
 
 
 start();
